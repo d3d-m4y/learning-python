@@ -10,6 +10,12 @@ screen.title("Snake.")
 screen.tracer(0)
 
 snake = Snake()
+
+screen.listen()
+screen.onkey(key="w", fun=snake.up)
+screen.onkey(key="a", fun=snake.left)
+screen.onkey(key="s", fun=snake.down)
+screen.onkey(key="d", fun=snake.right)
     
 game_running = True
 

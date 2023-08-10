@@ -20,13 +20,25 @@ game_running = True
 # game loop
 while game_running:
     screen.update()
-    time.sleep(0.1)
+    time.sleep(0.15)
 
     screen.listen()
     screen.onkey(key="w", fun=p1_paddle.move_up)
     screen.onkey(key="s", fun=p1_paddle.move_down)
     
     ball.move()
-
+    
+    # wall collision detection
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.wall_bounce()
+        
+    # player 1 paddle collision detection
+    if ball.distance(p1_paddle) < 50 and ball.xcor() > 330:
+        ball.paddle_bounce()
+        
+    # player 2 paddle collision detection
+    if ball.distance(p2_paddle) < 50 and ball.xcor() > -330:
+        ball.paddle_bounce()
+    
 # required to keep the screen up until a click is received
 screen.exitonclick()

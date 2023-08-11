@@ -1,7 +1,3 @@
-names = None
-letter = None
-output = None
-
 with open("letter\\letter.txt") as file:
     letter = file.read().splitlines()
 
